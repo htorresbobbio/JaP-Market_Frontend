@@ -81,7 +81,9 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+// eslint-disable-next-line no-unused-vars
 document.addEventListener("DOMContentLoaded", function (e) {
+    // eslint-disable-next-line no-undef
     getJSONData(CATEGORIES_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);

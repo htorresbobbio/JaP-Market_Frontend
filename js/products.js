@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const ORDER_ASC_BY_COST = "Cost";
 const ORDER_DESC_BY_SOLD_COUNT = "Relevancia";
-
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
@@ -10,15 +11,13 @@ function sortProducts(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_COST) {
         result = array.sort(function (a, b) {
-            result = array.sort(function (a, b) {
-                let aCount = parseInt(a.cost);
-                let bCount = parseInt(b.cost);
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
 
-                if (aCount > bCount) { return -1; }
-                if (aCount < bCount) { return 1; }
-                return 0;
-            });
-        })
+            if (aCount > bCount) { return -1; }
+            if (aCount < bCount) { return 1; }
+            return 0;
+        });
     }
     else if (criteria === ORDER_DESC_BY_SOLD_COUNT) {
         result = array.sort(function (a, b) {
