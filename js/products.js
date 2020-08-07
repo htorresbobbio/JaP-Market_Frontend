@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const ORDER_ASC_BY_COST = "Cost";
+const ORDER_ASC_BY_COST = "CostAsc";
+const ORDER_DESC_BY_COST = "CostDesc"
 const ORDER_DESC_BY_SOLD_COUNT = "Relevancia";
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
@@ -10,6 +11,16 @@ var maxCount = undefined;
 function sortProducts(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_COST) {
+        result = array.sort(function (a, b) {
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
+
+            if (aCount > bCount) { return 1; }
+            if (aCount < bCount) { return -1; }
+            return 0;
+        });
+    }
+    else if (criteria === ORDER_DESC_BY_COST) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.cost);
             let bCount = parseInt(b.cost);
@@ -86,8 +97,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
-    document.getElementById("sortCost").addEventListener("click", function () {
+    document.getElementById("sortCostAsc").addEventListener("click", function () {
         sortAndShowProducts(ORDER_ASC_BY_COST);
+    });
+
+    document.getElementById("sortCostDesc").addEventListener("click", function () {
+        sortAndShowProducts(ORDER_DESC_BY_COST);
     });
 
     document.getElementById("sortRelevance").addEventListener("click", function () {
