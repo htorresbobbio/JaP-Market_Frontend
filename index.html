@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id"
+    content="204514762043-khn737fvm4e3j6i1fl7crcfilbjj3ubd.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -48,6 +50,8 @@
     }
   </style>
 
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </head>
 
 <body class="text-center">
@@ -64,11 +68,12 @@
         <input type="checkbox" value="remember-me"> Recordar nombre de usuario
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" id="submitButton">Iniciar sesión</button>
+    <button class="btn btn-lg btn-primary btn-block mb-3" type="submit" id="submitButton">Iniciar sesión</button>
+    <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn"></div>
     <img class=mt-5 mb-0 src="img/logo_jap.svg" alt="" width="250" height="">
     <p class="mt-0 mb-3 text-muted">&copy; 2020</p>
   </form>
-  <!-- <script src="js/login.js"></script> -->
+  <script src="js/login.js"></script>
 </body>
 
 </html>
