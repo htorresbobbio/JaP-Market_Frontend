@@ -50,11 +50,11 @@
     }
   </style>
 
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 </head>
 
-<body class="text-center">
+<body class=" text-center">
   <form class="form-signin" action="main.html">
     <img src="img/logo_japmarket_Only Logo.svg" alt="" width="125">
     <img class="mb-4" src="img/logo_japmarket_Title.svg" alt="" width="320">
@@ -69,7 +69,8 @@
       </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block mb-3" type="submit" id="submitButton">Iniciar sesión</button>
-    <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn"></div>
+    <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn" data-width="320" data-theme="dark"
+      data-longtitle="true"></div>
     <img class=mt-5 mb-0 src="img/logo_jap.svg" alt="" width="250" height="">
     <p class="mt-0 mb-3 text-muted">&copy; 2020</p>
   </form>
