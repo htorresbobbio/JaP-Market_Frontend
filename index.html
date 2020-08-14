@@ -26,16 +26,20 @@
     }
 
     body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
       background-image: url(img/login-background.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+    }
+
+    .jumbotron {
+      background-image: none;
+      background-color: rgba(0, 100, 0, 0.7);
+      color: white;
+      height: auto;
+      padding: auto;
+      margin-bottom: auto;
+      font-weight: normal;
     }
   </style>
 
@@ -44,31 +48,31 @@
 
 </head>
 
-<body class=" text-center">
-  <div class="container">
-    <div class="row">
+<body>
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
       <div class="col">
-
+        <div class="jumbotron text-center">
+          <h1 class="display-4">Bienvenido</h1>
+          <p>Proyecto personal de Hugo Torres para el programa Jóvenes a Programar</p>
+          <p>Esta web es una herramienta generada para fines estrictamente educativos, no reliza compras o ventas reales
+            a terceros. Tampoco administra datos personales o de clientes.</p>
+          <p>Todo lo expresado en este dominio no tiene validez comercial</p>
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"><img src="img/logo_jap.svg"></a>
+        </div>
       </div>
       <div class="col">
-        <form class="form-signin animate__animated animate__fadeInRight animate__slow" action="main.html">
-          <img src="img/logo_japmarket_Only Logo.svg" alt="" width="125">
-          <img class="mb-4" src="img/logo_japmarket_Title.svg" alt="" width="320">
+        <form class="form-signin animate__animated animate__fadeInRight animate__slow text-center" action="main.html">
+          <img class="mb-4" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
           <h1 class="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
           <label for="inputUser" class="sr-only">Nombre de usuario</label>
           <input type="text" id="inputUser" class="form-control" placeholder="Nombre de usuario" required autofocus>
           <label for="inputPassword" class="sr-only">Contraseña</label>
           <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Recordar nombre de usuario
-            </label>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block mb-3" type="submit" id="submitButton">Iniciar sesión</button>
+          <button class="btn btn-lg btn-primary btn-block mt-3 mb-2" type="submit" id="submitButton">Iniciar
+            sesión</button>
           <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn" data-width="320"
             data-theme="dark" data-longtitle="true"></div>
-          <img class=mt-5 mb-0 src="img/logo_jap.svg" alt="" width="250" height="">
-          <p class="mt-0 mb-3 text-muted">&copy; 2020</p>
         </form>
       </div>
     </div>
