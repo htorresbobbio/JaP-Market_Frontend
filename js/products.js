@@ -51,7 +51,8 @@ function showProductsList() {
         let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) && ((searchText == undefined) || ((product.name.toLowerCase().indexOf(searchText) || product.description.toLowerCase().indexOf(searchText)) != -1))) {
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
+            ((searchText == undefined) || ((product.name.toLowerCase().indexOf(searchText) != -1) || (product.description.toLowerCase().indexOf(searchText) != -1)))) {
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
