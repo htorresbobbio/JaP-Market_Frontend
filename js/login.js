@@ -16,10 +16,28 @@ function onSignIn(googleUser) {
     window.location.href = "main.html"
 }
 
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+    var submitButton = document.getElementById("submitButton")
+    submitButton.addEventListener("click", function (e) {
+        let inputUser = document.getElementById("inputUser");
+        let inputPassword = document.getElementById("inputPassword");
+        let isFilled = true;
 
+        if (inputUser.value.trim() === '') {
+            isFilled = false;
+        }
+
+        if (inputPassword.value.trim() === '') {
+            isFilled = false;
+        }
+
+        if (isFilled) {
+            sessionStorage.clear();
+            sessionStorage.setItem('User-Logged', JSON.stringify({ email: inputUser.value.trim() }));
+            window.location = 'main.html';
+        }
+    })
 });

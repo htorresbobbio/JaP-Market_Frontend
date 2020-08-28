@@ -26,6 +26,7 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="py-2 d-none d-md-inline-block" href='' id="userData"></a>
     </div>
   </nav>
   <main role="main" class="pb-5">
@@ -49,12 +50,12 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-end">
+      <div class="row justify-content-end mb-3">
         <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
             <div class="col">
-              <p class="font-weight-normal text-right my-2">Cant.</p>
+              <p class="font-weight-normal text-right my-2">Precio</p>
             </div>
             <div class="col">
               <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
@@ -68,6 +69,17 @@
                 <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 col-sm-12 container mb-4">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <input class="form-control" type="text" placeholder="Buscar producto" id="searchText">
+            </div>
+            <button class="btn btn-link btn-sm" id="searchClear">Limpiar</button>
           </div>
         </div>
       </div>
