@@ -7,6 +7,7 @@ var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+var searchText = undefined;
 
 function sortProducts(criteria, array) {
     let result = [];
@@ -50,7 +51,7 @@ function showProductsList() {
         let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))) {
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) && ((searchText == undefined) || ((product.name.toLowerCase().indexOf(searchText) || product.description.toLowerCase().indexOf(searchText)) != -1))) {
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
@@ -140,4 +141,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         showProductsList();
     });
+
+    document.getElementById("searchText").addEventListener("input", function () {
+        searchText = document.getElementById("searchText").value.toLowerCase();
+        showProductsList();
+    })
+
+    document.getElementById("searchClear").addEventListener("click", function () {
+        document.getElementById("searchText").value = "";
+        searchText = undefined;
+        showProductsList();
+    })
 });
