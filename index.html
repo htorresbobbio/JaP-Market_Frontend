@@ -44,7 +44,7 @@
   </style>
 
   <script src="js/login.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> -->
 
 </head>
 
@@ -62,7 +62,9 @@
         </div>
       </div>
       <div class="col">
-        <form class="form-signin animate__animated animate__fadeInRight animate__slow text-center" action="main.html">
+        <!--  <form id="loginForm"
+          class="form-signin animate__animated animate__fadeInRight animate__slow text-center needs-validation"
+          novalidate>
           <img class="mb-4" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
           <h1 class="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
           <label for="inputUser" class="sr-only">Nombre de usuario</label>
@@ -71,9 +73,19 @@
           <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
           <button class="btn btn-lg btn-primary btn-block mt-3 mb-2" type="submit" id="submitButton">Iniciar
             sesión</button>
-          <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn" data-width="320"
-            data-theme="dark" data-longtitle="true"></div>
-        </form>
+
+        </form> -->
+
+        <div id="login" class="form-signin animate__animated animate__fadeInRight animate__slow text-center">
+          <img class="mb-4" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
+          <h1 class="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
+          <input type="text" id="inputUser" class="form-control" placeholder="Nombre de usuario">
+          <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña">
+          <button class="btn btn-lg btn-primary btn-block mt-3 mb-2" id="submitButton">Iniciar
+            sesión</button>
+          <!--           <div class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn" data-width="320"
+            data-theme="dark" data-longtitle="true"></div> -->
+        </div>
       </div>
     </div>
   </div>
