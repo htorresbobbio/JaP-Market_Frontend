@@ -39,6 +39,13 @@ function showComments(array) {
     }
 }
 
+function getFormatedDate() {
+    let timeNow = new Date()
+    let dateTime = ""
+    dateTime = `${timeNow.getFullYear()}-${timeNow.getMonth() + 1}-${timeNow.getDate()} ${timeNow.getHours()}:${timeNow.getMinutes()}:${timeNow.getSeconds()}`
+    return dateTime
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -75,14 +82,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (userLogged != undefined) {
         document.getElementById("reviewForm").style.display = "inline"
     }
-});
 
-document.getElementById("sendReview").addEventListener("click", function () {
-    let score = parseInt(document.querySelector('input[name="score"]:checked').value);
-    let description = document.getElementById("userComment");
-    let dateTime = Date().toString();
-    let newReview = { score: score, description: description.value, user: userLogged.email, dateTime: dateTime }
-    comments.push(newReview)
-    showComments(comments);
-    description.value = "";
-})
+    document.getElementById("sendReview").addEventListener("click", function () {
+        let score = parseInt(document.querySelector('input[name="score"]:checked').value);
+        let description = document.getElementById("userComment");
+        let newReview = { score: score, description: description.value, user: userLogged.email, dateTime: getFormatedDate() }
+        comments.push(newReview)
+        showComments(comments);
+        description.value = "";
+    })
+});
