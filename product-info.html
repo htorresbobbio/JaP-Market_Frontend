@@ -29,15 +29,82 @@
       <a class="py-2 d-none d-md-inline-block" href='' id="userData"></a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega:
-        20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
+          seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
+      </div>
+      <h3 id="productName"></h3>
+      <hr class="my-3">
+      <div class="row">
+        <dl class="col-9">
+          <dt>Descripción</dt>
+          <dd>
+            <p id="productDescription"></p>
+          </dd>
+        </dl>
+        <dl class="col-3 text-right">
+          <dt>Precio</dt>
+          <dd>
+            <p id="productCost"></p>
+          </dd>
+
+          <dt>Unidades vendidas</dt>
+          <dd>
+            <p id="productSoldCount"></p>
+          </dd>
+
+          <dt>Categoría</dt>
+          <dd>
+            <p id="productCategory"></p>
+          </dd>
+        </dl>
+      </div>
+      <dl>
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          </div>
+        </dd>
+      </dl>
+      <hr class="my-3">
+      <h5 class="mb-4 mt-4">Reseñas de compradores</h5>
+      <div id="productComments" class="ml-5"></div>
+      <hr class="my-3">
+      <div id="reviewForm" class="mt-4" style="display: none;">
+        <h5 class="mb-3">Haz una reseña</h5>
+        <label for="score">Calificación:</label>
+        <div class="mb-3">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="score" id="oneStar" value="1">
+            <label for="1" class="form-check-label">1 </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="score" id="twoStars" value="2">
+            <label for="2" class="form-check-label">2 </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="score" id="threeStars" value="3">
+            <label for="3" class="form-check-label">3 </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="score" id="fourStars" value="4">
+            <label for="4" class="form-check-label">4 </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="score" id="fiveStars" value="5">
+            <label for="5" class="form-check-label">5 </label>
+          </div>
+        </div>
+        <label for="comment">Comentario:</label>
+        <textarea name="comment" id="userComment" class="form-control mb-3" rows="5"></textarea>
+        <button class="btn btn-primary" id="sendReview">Enviar</button>
+      </div>
     </div>
-  </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
