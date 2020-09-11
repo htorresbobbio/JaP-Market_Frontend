@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     if (userLogged != undefined) {
         document.getElementById("reviewForm").style.display = "inline"
+        document.getElementById("loginToReview").style.display = "none"
     }
 
     document.getElementById("sendReview").addEventListener("click", function () {

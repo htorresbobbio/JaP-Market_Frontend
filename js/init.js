@@ -75,7 +75,9 @@ function signOut() {
     });
   }
   sessionStorage.clear();
+  sessionStorage.setItem('Visited', true)
   window.location.href = "index.html"
+
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -109,10 +111,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
 
     if (isFilled) {
-      sessionStorage.clear();
+      sessionStorage.clear()
       sessionStorage.setItem('User-Logged', JSON.stringify({ email: inputUser.value.trim() }));
       sessionStorage.setItem('Visited', true)
-      window.location = 'index.html';
+      window.location.reload();
     }
   })
 });
