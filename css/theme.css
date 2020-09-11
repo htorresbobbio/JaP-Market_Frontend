@@ -8749,3 +8749,7 @@ a.text-dark:hover, a.text-dark:focus {
   z-index: 1021;
   display: none;
 }
+
+.checked {
+  color: orange;
+}

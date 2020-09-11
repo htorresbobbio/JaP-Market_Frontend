@@ -26,10 +26,10 @@ function showComments(array) {
         let comment = array[i];
         let starRatingHTML = "";
         for (let i = 1; i <= comment.score; i++) {
-            starRatingHTML += "<span class='fa fa-star checked'></span>"
+            starRatingHTML += "<span class='fas fa-star checked'></span>"
         }
         for (let i = comment.score + 1; i <= 5; i++) {
-            starRatingHTML += "<span class='fa fa-star'></span>"
+            starRatingHTML += "<span class='fas fa-star'></span>"
         }
         htmlContentToAppend += `<div class="mt-2"><strong>Calificación:</strong> ${starRatingHTML}</div>
         <p class="mt-1 mb-2">${comment.description}</p>

@@ -89,11 +89,11 @@
           </div>
         </dd>
       </dl>
-      <hr class="my-3">
-      <h5 class="mb-4 mt-4">Reseñas de compradores</h5>
+      <hr class="mb-4">
+      <h5 class="mb-4">Reseñas de compradores</h5>
       <div id="productComments" class="ml-5"></div>
-      <hr class="my-3">
-      <div id="reviewForm" class="mt-4" style="display: none;">
+      <hr class="mb-5">
+      <div id="reviewForm" style="display: none;">
         <h5 class="mb-3">Haz una reseña</h5>
         <label for="score">Calificación:</label>
         <div class="mb-3">
@@ -120,7 +120,7 @@
         </div>
         <label for="comment">Comentario:</label>
         <textarea name="comment" id="userComment" class="form-control mb-3" rows="5"></textarea>
-        <button class="btn btn-primary" id="sendReview">Enviar</button>
+        <button class="btn btn-lg btn-primary mb-5" id="sendReview">Enviar</button>
       </div>
     </div>
   </main>
@@ -128,15 +128,11 @@
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Inicio de sesión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-header justify-content-center">
+          <img class="img-fluid" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
         </div>
         <div class="modal-body">
-          <img class="img-fluid" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
-          <input type="text" id="inputUser" class="form-control p-3 my-3" placeholder="Nombre de usuario">
+          <input type="text" id="inputUser" class="form-control p-3 mb-3" placeholder="Nombre de usuario">
           <input type="password" id="inputPassword" class="form-control p-3 my-3" placeholder="Contraseña">
           <div class="modal-footer justify-content-center">
             <button id="submitButton" type="button" class="btn btn-lg btn-primary btn-block">Continuar</button>
