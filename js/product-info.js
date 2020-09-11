@@ -33,7 +33,7 @@ function showComments(array) {
         }
         htmlContentToAppend += `<div class="mt-2"><strong>Calificación:</strong> ${starRatingHTML}</div>
         <p class="mt-1 mb-2">${comment.description}</p>
-        <div class="mb-5 ml-4"><h6 class="font-weight-bold">${comment.user}</h6>
+        <div class="mb-5 ml-4"><h6 class="font-weight-bold small">${comment.user}</h6>
         <em>Publicado el ${comment.dateTime}</em></div>`
         document.getElementById("productComments").innerHTML = htmlContentToAppend;
     }
@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
 
     document.getElementById("sendReview").addEventListener("click", function () {
-        let score = parseInt(document.querySelector('input[name="score"]:checked').value);
+        let rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
         let description = document.getElementById("userComment");
-        let newReview = { score: score, description: description.value, user: userLogged.email, dateTime: getFormatedDate() }
+        let newReview = { score: rating, description: description.value, user: userLogged.email, dateTime: getFormatedDate() }
         comments.push(newReview)
         showComments(comments);
         description.value = "";

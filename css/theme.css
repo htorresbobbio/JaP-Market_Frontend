@@ -8753,3 +8753,23 @@ a.text-dark:hover, a.text-dark:focus {
 .checked {
   color: orange;
 }
+
+.star-rating {
+  direction: rtl;
+}
+
+.star-rating input[type=radio] {
+  display: none
+}
+
+.star-rating label {
+  color: rgb(133, 142, 192);
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label,
+.star-rating input[type=radio]:checked~label {
+  color: orange;
+}
