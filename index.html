@@ -145,6 +145,34 @@
       </div>
     </div>
   </main>
+  <!--Modal first visit-->
+  <div class="modal fade" id="firstVisitModal" tabindex="-1" aria-labelledby="firstVisitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¡Bienvenido!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Este es el proyecto personal de <a href="https://www.github.com/htorresbobbio" target="_blank">Hugo
+              Torres</a> para el
+            curso de
+            Desarrollo Web de Jóvenes a Programar 2020.</p>
+          <div class="alert alert-warning">
+            <p>Esta web es una herramienta generada para fines estrictamente educativos. No
+              realiza compras o ventas
+              reales a terceros. Tampoco administra datos personales o de clientes.</p>
+            <p>Todo lo expresado en este dominio no tiene validez comercial.</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <img src="img/logo_jap.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--Modal login form-->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -175,6 +203,12 @@
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script>
+    if (!sessionStorage.getItem("Visited")) {
+      $('#firstVisitModal').modal()
+      sessionStorage.setItem("Visited", true);
+    }
+  </script>
 </body>
 
 </html>

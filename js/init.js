@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (isFilled) {
       sessionStorage.clear();
       sessionStorage.setItem('User-Logged', JSON.stringify({ email: inputUser.value.trim() }));
+      sessionStorage.setItem('Visited', true)
       window.location = 'index.html';
     }
   })
