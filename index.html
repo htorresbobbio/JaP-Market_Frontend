@@ -16,37 +16,71 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5">
-    <a class="navbar-brand" href="#"><img src="img/logo_japmarket_Title_navbar.svg" height="60" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-        class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navbar-nav flex-grow-1 justify-content-around px-5 text-center">
-        <h5 class="nav-item mb-0"><a class="nav-link active" href="#">Inicio</a></h5>
-        <h5 class="nav-item mb-0"><a class="nav-link" href="categories.html">Categorías</a></h5>
-        <h5 class="nav-item mb-0"><a class="nav-link" href="products.html">Productos</a></h5>
-        <h5 class="nav-item mb-0"><a class="nav-link" href="sell.html">Vender</a></h5>
-      </div>
-      <div class="navbar-nav" style="display: none;" id="userPanel">
-        <h6 class="navbar-item mb-0 active"><a class="nav-link active mr-3" href="cart.html">Mi carrito</a></h6>
-        <h6 class="nav-item dropdown mb-0 active">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false"></a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-            <a class="dropdown-item" href="#" onclick="signOut()">Cerrar sesión</a>
-          </div>
-        </h6>
-      </div>
-      <div class="navbar-nav" id="loginPanel">
-        <a href="login.html" class="nav-item btn btn-light">
-          <h6 class="mb-0">Iniciar sesión</h6>
-        </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 shadow-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="img/logo_japmarket_Title_navbar.svg" height="60" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav flex-grow-1 justify-content-around px-5 text-center">
+          <h5 class="nav-item mb-0"><a class="nav-link active" href="#">Inicio</a></h5>
+          <h5 class="nav-item mb-0"><a class="nav-link" href="categories.html">Categorías</a></h5>
+          <h5 class="nav-item mb-0"><a class="nav-link" href="products.html">Productos</a></h5>
+          <h5 class="nav-item mb-0"><a class="nav-link" href="sell.html">Vender</a></h5>
+        </div>
+        <div class="navbar-nav align-items-center text-center" style="display: none;" id="userPanel">
+          <h6 class="navbar-item mb-0 active">
+            <a class="nav-link active mr-3" href="cart.html">Mi carrito</a>
+          </h6>
+          <h6 class="nav-item dropdown mb-0 active">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+              <a class="dropdown-item" href="#" onclick="signOut()">Cerrar sesión</a>
+            </div>
+          </h6>
+        </div>
+        <div class="navbar-nav" id="loginPanel">
+          <a href="login.html" class="nav-item btn btn-light shadow">
+            <h6 class="mb-0">Iniciar sesión</h6>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
   <main>
+    <div id="mainCarousel" class="carousel slide" data-ride="carousel" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#mainCarousel" data-slide-to="1"></li>
+        <li data-target="#mainCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/carousel/carousel1.svg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel/carousel2.svg" class="d-block w-100" alt="">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel/carousel3.svg" class="d-block w-100" alt="">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+      </a>
+    </div>
+
+
+
+
     <div class="album bg-light">
       <div class="container">
         <div class="row row-cols-1 row-cols-md-3">
