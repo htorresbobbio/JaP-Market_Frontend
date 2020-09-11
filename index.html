@@ -12,13 +12,15 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Bootstrap main css -->
   <link rel="stylesheet" href="css/theme.css"> <!-- Bootstrap custom theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Animate.css-->
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 shadow-lg">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="img/logo_japmarket_Title_navbar.svg" height="60" alt=""></a>
+      <a class="navbar-brand" href="index.html"><img src="img/logo_japmarket_Title_navbar.svg" height="60" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
@@ -31,7 +33,8 @@
         </div>
         <div class="navbar-nav align-items-center text-center" style="display: none;" id="userPanel">
           <h6 class="navbar-item mb-0 active">
-            <a class="nav-link active mr-3" href="cart.html">Mi carrito</a>
+            <a id="cartCount" class="nav-link active mr-3" href="cart.html"><i class="fas fa-shopping-cart"></i>
+              Carrito</a>
           </h6>
           <h6 class="nav-item dropdown mb-0 active">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -77,12 +80,9 @@
         <span class="sr-only">Siguiente</span>
       </a>
     </div>
-
-
-
-
-    <div class="album bg-light">
-      <div class="container">
+    <div class="album bg-light p-5">
+      <div class="container animate__animated animate__fadeInLeft animate__slow">
+        <h4 class="mb-4">Categorías Populares</h4>
         <div class="row row-cols-1 row-cols-md-3">
           <div class="col mb-4">
             <div class="card">
@@ -145,13 +145,13 @@
       </div>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted bg-secondary p-3">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <p class="mb-0">Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <script src="js/jquery-3.5.1.min.js"></script>
