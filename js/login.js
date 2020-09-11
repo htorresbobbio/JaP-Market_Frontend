@@ -13,7 +13,7 @@ function onSignIn(googleUser) {
     console.log("ID Token: " + id_token);
 
     // After login redirect:
-    window.location.href = "main.html"
+    window.location.href = "index.html"
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (isFilled) {
             sessionStorage.clear();
             sessionStorage.setItem('User-Logged', JSON.stringify({ email: inputUser.value.trim() }));
-            window.location = 'main.html';
+            window.location = 'index.html';
         }
     })
 });

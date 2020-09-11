@@ -8,26 +8,28 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link
-    href="https://fonts.googleapis.com/css?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900"
-    rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Bootstrap main css -->
+  <link rel="stylesheet" href="css/theme.css"> <!-- Bootstrap custom theme -->
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="main.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" href='' id="userData"></a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5">
+    <a class="navbar-brand" href="index.html"><img src="img/logo_japmarket_Title_navbar.svg" height="60" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav mr-auto ml-auto">
+        <h5 class="nav-item mb-0"><a class="nav-link" href="index.html">Inicio</a></h5>
+        <h5 class="nav-item mb-0"><a class="nav-link" href="categories.html">Categorías</a></h5>
+        <h5 class="nav-item mb-0"><a class="nav-link active" href="#">Productos</a></h5>
+        <h5 class="nav-item mb-0"><a class="nav-link" href="sell.html">Vender</a></h5>
+      </div>
+      <h6 class="navbar-text mb-0 text-white" id="userName">
+      </h6>
+      <h6 class="nav-item mb-0"><a class="nav-link text-white ml-3" href="cart.html">Mi carrito</a></h6>
     </div>
+    <!-- <a class="py-2 d-none d-md-inline-block" href="#" onclick="signOut();">Cerrar sesión</a> -->
   </nav>
   <main role="main" class="pb-5">
     <div class="text-center p-4">
@@ -106,7 +108,7 @@
       <div></div>
     </div>
   </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
