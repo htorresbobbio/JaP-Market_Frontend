@@ -49,12 +49,6 @@
   </nav>
   <main role="main">
     <div class="container mt-5">
-      <div class="text-center p-4">
-        <h2>Descripción del producto</h2>
-        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
-        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
-          seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
-      </div>
       <h3 id="productName"></h3>
       <hr class="my-3">
       <div class="row">
@@ -81,13 +75,21 @@
           </dd>
         </dl>
       </div>
-      <dl>
-        <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+      <div class="mb-4" id="carouselContainer">
+        <h5 class="mb-3">Imágenes</h5>
+        <div id="productCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" id="carouselInner">
           </div>
-        </dd>
-      </dl>
+          <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+        </div>
+      </div>
       <div class="album bg-light">
         <div class="container p-0">
           <h5 class="mb-4">Productos relacionados</h5>

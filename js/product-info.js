@@ -28,19 +28,23 @@ function showRelatedProducts(relatedArray) {
 function showImagesGallery(array) {
     let htmlContentToAppend = "";
 
-    for (let i = 0; i < array.length; i++) {
-        let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
+    array.forEach(imageSrc => {
+        if (imageSrc.indexOf("_") < 0) {
+            htmlContentToAppend += `
+                <div class="carousel-item active">
+                    <img src="${imageSrc}" class="d-block w-100" alt="">
+                </div>
         `
-
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
-    }
+        }
+        else {
+            htmlContentToAppend += `
+                <div class="carousel-item">
+                    <img src="${imageSrc}" class="d-block w-100" alt="">
+                </div>
+        `
+        }
+        document.getElementById("carouselInner").innerHTML = htmlContentToAppend;
+    });
 }
 
 function showComments(array) {
@@ -74,31 +78,28 @@ function getFormatedDate() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     userLogged = JSON.parse(sessionStorage.getItem('User-Logged'));
-
-    getJSONData(PRODUCTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            productsArray = resultObj.data;
-        }
-    })
-
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
+            getJSONData(PRODUCTS_URL).then(function (resultObj) {
+                if (resultObj.status === "ok") {
+                    productsArray = resultObj.data;
+                    let productNameHTML = document.getElementById("productName");
+                    let productDescriptionHTML = document.getElementById("productDescription");
+                    let productCostHTML = document.getElementById("productCost");
+                    let productSoldCountHTML = document.getElementById("productSoldCount");
+                    let productCategory = document.getElementById("productCategory");
 
-            let productNameHTML = document.getElementById("productName");
-            let productDescriptionHTML = document.getElementById("productDescription");
-            let productCostHTML = document.getElementById("productCost");
-            let productSoldCountHTML = document.getElementById("productSoldCount");
-            let productCategory = document.getElementById("productCategory");
+                    productNameHTML.innerHTML = product.name;
+                    productDescriptionHTML.innerHTML = product.description;
+                    productCostHTML.innerHTML = `${product.cost} ${product.currency}`;
+                    productSoldCountHTML.innerHTML = product.soldCount;
+                    productCategory.innerHTML = product.category;
 
-            productNameHTML.innerHTML = product.name;
-            productDescriptionHTML.innerHTML = product.description;
-            productCostHTML.innerHTML = `${product.cost} ${product.currency}`;
-            productSoldCountHTML.innerHTML = product.soldCount;
-            productCategory.innerHTML = product.category;
-
-            showImagesGallery(product.images);
-            showRelatedProducts(product.relatedProducts);
+                    showImagesGallery(product.images);
+                    showRelatedProducts(product.relatedProducts);
+                }
+            })
         }
     });
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
