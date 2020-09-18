@@ -9,7 +9,7 @@ function showRelatedProducts(relatedArray) {
     relatedArray.forEach(relatedIndex => {
         let product = productsArray[relatedIndex]
         htmlContentToAppend += `
-        <div class="col-3 mb-4">
+        <div class="col-md-3 mb-4">
             <div class="card">
                 <img class="card-img-top" src="${product.imgSrc}">
                 <div class="card-body">
