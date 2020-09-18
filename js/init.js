@@ -77,7 +77,6 @@ function signOut() {
   sessionStorage.clear();
   sessionStorage.setItem('Visited', true)
   window.location.href = "index.html"
-
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -95,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     userPanel.style.display = "flex";
     loginPanel.style.display = "none";
   }
+  else $('#loginModal').modal()
 
   var submitButton = document.getElementById("submitButton")
   submitButton.addEventListener("click", function (e) {

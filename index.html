@@ -32,16 +32,15 @@
           <h5 class="nav-item mb-0"><a class="nav-link" href="sell.html">Vender</a></h5>
         </div>
         <div class="navbar-nav align-items-center text-center" style="display: none;" id="userPanel">
-          <h6 class="navbar-item mb-0 active">
-            <a id="cartCount" class="nav-link active mr-3" href="cart.html"><i class="fas fa-shopping-cart"></i>
-              Carrito</a>
-          </h6>
           <h6 class="nav-item dropdown mb-0 active">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false"></a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-              <a class="dropdown-item" href="#" onclick="signOut()">Cerrar sesión</a>
+            <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+              <a id="cartCount" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i>
+                Carrito</a>
+              <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+              <a class="dropdown-item" href="#" onclick="signOut()"><i class="fas fa-sign-out-alt"></i> Cerrar
+                sesión</a>
             </div>
           </h6>
         </div>
@@ -145,6 +144,23 @@
       </div>
     </div>
   </main>
+  <!--Modal login form-->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <img class="img-fluid" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
+        </div>
+        <div class="modal-body">
+          <input type="text" id="inputUser" class="form-control p-3 mb-3" placeholder="Nombre de usuario">
+          <input type="password" id="inputPassword" class="form-control p-3 my-3" placeholder="Contraseña">
+          <div class="modal-footer justify-content-center">
+            <button id="submitButton" type="button" class="btn btn-lg btn-primary btn-block">Continuar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--Modal first visit-->
   <div class="modal fade" id="firstVisitModal" tabindex="-1" aria-labelledby="firstVisitModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -168,23 +184,6 @@
           </div>
           <div class="modal-footer justify-content-center">
             <img src="img/logo_jap.svg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Modal login form-->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header justify-content-center">
-          <img class="img-fluid" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket">
-        </div>
-        <div class="modal-body">
-          <input type="text" id="inputUser" class="form-control p-3 mb-3" placeholder="Nombre de usuario">
-          <input type="password" id="inputPassword" class="form-control p-3 my-3" placeholder="Contraseña">
-          <div class="modal-footer justify-content-center">
-            <button id="submitButton" type="button" class="btn btn-lg btn-primary btn-block">Continuar</button>
           </div>
         </div>
       </div>

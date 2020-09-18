@@ -27,16 +27,15 @@
           <h5 class="nav-item mb-0"><a class="nav-link" href="sell.html">Vender</a></h5>
         </div>
         <div class="navbar-nav align-items-center text-center" style="display: none;" id="userPanel">
-          <h6 class="navbar-item mb-0 active">
-            <a id="cartCount" class="nav-link active mr-3" href="cart.html"><i class="fas fa-shopping-cart"></i>
-              Carrito</a>
-          </h6>
           <h6 class="nav-item dropdown mb-0 active">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false"></a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-              <a class="dropdown-item" href="#" onclick="signOut()">Cerrar sesión</a>
+            <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+              <a id="cartCount" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i>
+                Carrito</a>
+              <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+              <a class="dropdown-item" href="#" onclick="signOut()"><i class="fas fa-sign-out-alt"></i> Cerrar
+                sesión</a>
             </div>
           </h6>
         </div>
