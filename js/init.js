@@ -94,7 +94,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     userPanel.style.display = "flex";
     loginPanel.style.display = "none";
   }
-  else $('#loginModal').modal()
+  else if (window.location.href.indexOf("index.html") >= 0) {
+    $('#loginModal').modal()
+  }
 
   var submitButton = document.getElementById("submitButton")
   submitButton.addEventListener("click", function (e) {
