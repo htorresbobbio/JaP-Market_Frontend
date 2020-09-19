@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     userPanel.style.display = "flex";
     loginPanel.style.display = "none";
   }
-  else if (window.location.href.indexOf("index.html") >= 0) {
+  else if (location.pathname == "/Obligatorio-JaP-DW2020/" || "/index.html") {
     $('#loginModal').modal()
   }
 
