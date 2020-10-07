@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en">
+<html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta
@@ -8,24 +7,8 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
-    <title>eMercado - Todo lo que busques está aquí</title>
+    <title>eMercado - Mi carrito</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Bootstrap main css -->
     <link rel="stylesheet" href="css/theme.css" />
@@ -112,67 +95,114 @@
         </div>
       </div>
     </nav>
-    <div class="container p-5">
-      <div
-        class="alert alert-danger"
-        role="alert"
-        style="position: relative; width: auto; top: 0"
-      >
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>
-          Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y
-          Entrega 6 (Fecha de entrega: 25/10/2020).
-        </p>
-        <hr />
-        <p class="mb-0">
-          Para saber qué debes hacer, fijate en la actividad en CREA
-          correspondiente a esta entrega.
-        </p>
-      </div>
-    </div>
-    <!--Modal login form-->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      aria-labelledby="loginModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header justify-content-center">
-            <img
-              class="img-fluid"
-              src="img/logo_japmarket_Title.svg"
-              alt="Logotipo JaPMarket"
-            />
+
+    <main>
+      <div id="cart-container" class="container"></div>
+
+      <div class="container my-5">
+        <div class="row px-4 border rounded m-5 py-5">
+          <div class="col">
+            <div class="px-4 py-1 text-uppercase font-weight-bold">
+              Detalles de envío
+            </div>
+            <div class="p-4"></div>
+            <div class="px-4 py-1 text-uppercase font-weight-bold">
+              Comentarios para el vendedor
+            </div>
+            <div class="px-4">
+              <p class="font-italic mb-4 small">
+                Si quieres hacer alguna aclaración para el vendedor escríbela
+                aquí
+              </p>
+              <textarea
+                name=""
+                cols="30"
+                rows="4"
+                class="form-control"
+              ></textarea>
+            </div>
           </div>
-          <div class="modal-body">
-            <input
-              type="text"
-              id="inputUser"
-              class="form-control p-3 mb-3"
-              placeholder="Nombre de usuario"
-            />
-            <input
-              type="password"
-              id="inputPassword"
-              class="form-control p-3 my-3"
-              placeholder="Contraseña"
-            />
-            <div class="modal-footer justify-content-center">
-              <button
-                id="submitButton"
-                type="button"
-                class="btn btn-lg btn-primary btn-block"
+          <div class="col">
+            <div class="px-4 py-1 text-uppercase font-weight-bold">
+              Resumen del pedido
+            </div>
+            <div class="px-4">
+              <p class="font-italic mb-2 small">
+                Los costos de envíos son calculados en base a la dirección
+                ingresada
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Costo de los productos </strong>
+                  <div class="font-weight-bold">
+                    $ <strong id="product-subtotal"></strong>
+                  </div>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Costo de envío </strong>
+                  <div class="font-weight-bold">
+                    $ <strong id="shipping-cost">10</strong>
+                  </div>
+                </li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                  <strong class="text-muted">Total</strong>
+                  <div>
+                    <h5 class="font-weight-bold d-inline-block">$</h5>
+                    <h5 id="total" class="font-weight-bold d-inline-block"></h5>
+                  </div>
+                </li>
+              </ul>
+              <a href="#" class="btn btn-dark rounded-pill py-2 btn-block"
+                >Ir a pagar</a
               >
-                Continuar
-              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <!--Modal login form-->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header justify-content-center">
+              <img
+                class="img-fluid"
+                src="img/logo_japmarket_Title.svg"
+                alt="Logotipo JaPMarket"
+              />
+            </div>
+            <div class="modal-body">
+              <input
+                type="text"
+                id="inputUser"
+                class="form-control p-3 mb-3"
+                placeholder="Nombre de usuario"
+              />
+              <input
+                type="password"
+                id="inputPassword"
+                class="form-control p-3 my-3"
+                placeholder="Contraseña"
+              />
+              <div class="modal-footer justify-content-center">
+                <button
+                  id="submitButton"
+                  type="button"
+                  class="btn btn-lg btn-primary btn-block"
+                >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer class="text-muted bg-secondary p-3">
       <div class="container">
         <p class="float-right">
@@ -200,4 +230,3 @@
     <script src="js/cart.js"></script>
   </body>
 </html>
-
