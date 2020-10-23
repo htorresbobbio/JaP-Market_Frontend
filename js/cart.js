@@ -1,5 +1,14 @@
 let articles = [];
 
+const productTotal = document.querySelector("#product-subtotal")
+
+const shippingCost = document.querySelector("#shipping-cost");
+
+function removeArticle(index) {
+  articles.splice(index, 1)
+  showCartContent(articles)
+}
+
 function showCartContent(array) {
   const cartContainer = document.querySelector("#cart-container");
   let htmlContentToAppend = `<div class="row mt-5 mx-5 mb-4 px-3">
@@ -10,13 +19,24 @@ function showCartContent(array) {
           <div class="col-1"></div>
         </div>`;
 
-  array.forEach((article, index) => {
-    let costUYU = article.unitCost;
-    if (article.currency == "USD") {
-      costUYU = article.unitCost * 40;
-    }
+  if (array.length <= 0) {
+    cartContainer.innerHTML = `
+    <div class="row mt-5 mx-5 mb-4 px-3 text-center">
+      <div class="col">
+        <h4>Tu carrito está vacío</h4>
+        <p>Ve todos los <a href="products.html">productos</a> que tenemos disponibles!</p>
+      </div>
+    </div>
+    `
+    document.querySelector("#cart-details").style.display = "none"
+  } else {
+    array.forEach((article, index) => {
+      let costUYU = article.unitCost;
+      if (article.currency == "USD") {
+        costUYU = article.unitCost * 40;
+      }
 
-    htmlContentToAppend += `<div id="article${index}" class="row align-items-center mx-5 px-3 py-1">
+      htmlContentToAppend += `<div id="article${index}" class="row align-items-center mx-5 px-3 py-1">
           <div class="col">
             <div class="p-2">
               <img
@@ -45,12 +65,13 @@ function showCartContent(array) {
           <div class="col-2 text-center font-weight-bold">$ <p id="subtotal${index}" class="d-inline-block m-0"></p></div>
             
           <div class="col-1 text-center">
-            <a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+            <a href="#" onclick="removeArticle(${index})" class="text-dark"><i class="fa fa-trash"></i></a>
           </div>
       </div>`;
-  });
-  cartContainer.innerHTML = htmlContentToAppend;
-  calcSubtotal();
+    });
+    cartContainer.innerHTML = htmlContentToAppend;
+    calcSubtotal();
+  }
 }
 
 function calcSubtotal() {
@@ -66,26 +87,36 @@ function calcSubtotal() {
 }
 
 function calcProductTotal() {
-  let productTotal = 0;
+  let totalAcc = 0
   articles.forEach((article, index) => {
     const subtotal = parseInt(
       document.querySelector(`#subtotal${index}`).innerHTML
     );
-    productTotal += subtotal;
+    totalAcc += subtotal;
   });
-  document.querySelector("#product-subtotal").innerHTML = productTotal;
-  calcTotal();
+  productTotal.innerHTML = totalAcc
+  calcShippingCost();
+}
+
+function calcShippingCost() {
+  const shippingType = document.querySelector(".shipping-type:checked").value
+  const productTotalValue = parseInt(productTotal.innerHTML)
+  switch (shippingType) {
+    case "premium":
+      shippingCost.innerHTML = productTotalValue * 0.15
+      break
+    case "express":
+      shippingCost.innerHTML = productTotalValue * 0.07
+      break
+    case "standard":
+      shippingCost.innerHTML = productTotalValue * 0.05
+      break
+  }
+  calcTotal()
 }
 
 function calcTotal() {
-  const productTotal = parseInt(
-    document.querySelector("#product-subtotal").innerHTML
-  );
-  const shippingCost = parseInt(
-    document.querySelector("#shipping-cost").innerHTML
-  );
-
-  document.querySelector("#total").innerHTML = productTotal + shippingCost;
+  document.querySelector("#total").innerHTML = parseInt(productTotal.innerHTML) + parseInt(shippingCost.innerHTML);
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -93,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok") {
       articles = resultObj.data.articles;
       showCartContent(articles);
+      calcShippingCost()
     }
   });
 });

@@ -1,232 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <title>eMercado - Mi carrito</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Bootstrap main css -->
-    <link rel="stylesheet" href="css/theme.css" />
-    <!-- Bootstrap custom theme -->
-    <link href="css/dropzone.css" rel="stylesheet" />
-    <!-- <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script> -->
-  </head>
 
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 shadow-lg"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="index.html"
-          ><img src="img/logo_japmarket_Title_navbar.svg" height="50" alt=""
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div
-            class="navbar-nav flex-grow-1 justify-content-around px-5 text-center"
-          >
-            <h5 class="nav-item mb-0">
-              <a class="nav-link" href="index.html">Inicio</a>
-            </h5>
-            <h5 class="nav-item mb-0">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </h5>
-            <h5 class="nav-item mb-0">
-              <a class="nav-link" href="products.html">Productos</a>
-            </h5>
-            <h5 class="nav-item mb-0">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </h5>
-          </div>
-          <div
-            class="navbar-nav align-items-center text-center"
-            style="display: none"
-            id="userPanel"
-          >
-            <h6 class="nav-item dropdown mb-0 active">
-              <a
-                class="nav-link dropdown-toggle active"
-                href="#"
-                id="navbarDropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              ></a>
-              <div
-                class="dropdown-menu text-center"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a id="cartCount" class="dropdown-item" href="cart.html"
-                  ><i class="fas fa-shopping-cart"></i> Carrito</a
-                >
-                <a class="dropdown-item" href="my-profile.html"
-                  ><i class="fas fa-user"></i> Mi perfil</a
-                >
-                <a class="dropdown-item" href="#" onclick="signOut()"
-                  ><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a
-                >
-              </div>
-            </h6>
-          </div>
-          <div class="navbar-nav" id="loginPanel">
-            <button
-              class="nav-item btn btn-light shadow py-2 px-3"
-              data-toggle="modal"
-              data-target="#loginModal"
-            >
-              <h6 class="mb-0">Iniciar sesión</h6>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <title>eMercado - Mi carrito</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- Bootstrap main css -->
+  <link rel="stylesheet" href="css/theme.css" />
+  <!-- Bootstrap custom theme -->
+  <link href="css/dropzone.css" rel="stylesheet" />
+  <!-- <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script> -->
+</head>
 
-    <main>
-      <div id="cart-container" class="container"></div>
-
-      <div class="container my-5">
-        <div class="row px-4 border rounded m-5 py-5">
-          <div class="col">
-            <div class="px-4 py-1 text-uppercase font-weight-bold">
-              Detalles de envío
-            </div>
-            <div class="p-4"></div>
-            <div class="px-4 py-1 text-uppercase font-weight-bold">
-              Comentarios para el vendedor
-            </div>
-            <div class="px-4">
-              <p class="font-italic mb-4 small">
-                Si quieres hacer alguna aclaración para el vendedor escríbela
-                aquí
-              </p>
-              <textarea
-                name=""
-                cols="30"
-                rows="4"
-                class="form-control"
-              ></textarea>
-            </div>
-          </div>
-          <div class="col">
-            <div class="px-4 py-1 text-uppercase font-weight-bold">
-              Resumen del pedido
-            </div>
-            <div class="px-4">
-              <p class="font-italic mb-2 small">
-                Los costos de envíos son calculados en base a la dirección
-                ingresada
-              </p>
-              <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom">
-                  <strong class="text-muted">Costo de los productos </strong>
-                  <div class="font-weight-bold">
-                    $ <strong id="product-subtotal"></strong>
-                  </div>
-                </li>
-                <li class="d-flex justify-content-between py-3 border-bottom">
-                  <strong class="text-muted">Costo de envío </strong>
-                  <div class="font-weight-bold">
-                    $ <strong id="shipping-cost">10</strong>
-                  </div>
-                </li>
-                <li class="d-flex justify-content-between py-3 border-bottom">
-                  <strong class="text-muted">Total</strong>
-                  <div>
-                    <h5 class="font-weight-bold d-inline-block">$</h5>
-                    <h5 id="total" class="font-weight-bold d-inline-block"></h5>
-                  </div>
-                </li>
-              </ul>
-              <a href="#" class="btn btn-dark rounded-pill py-2 btn-block"
-                >Ir a pagar</a
-              >
-            </div>
-          </div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 shadow-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="img/logo_japmarket_Title_navbar.svg" height="50" alt="" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav flex-grow-1 justify-content-around px-5 text-center">
+          <h5 class="nav-item mb-0">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </h5>
+          <h5 class="nav-item mb-0">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </h5>
+          <h5 class="nav-item mb-0">
+            <a class="nav-link" href="products.html">Productos</a>
+          </h5>
+          <h5 class="nav-item mb-0">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </h5>
         </div>
-      </div>
-      <!--Modal login form-->
-      <div
-        class="modal fade"
-        id="loginModal"
-        tabindex="-1"
-        aria-labelledby="loginModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header justify-content-center">
-              <img
-                class="img-fluid"
-                src="img/logo_japmarket_Title.svg"
-                alt="Logotipo JaPMarket"
-              />
+        <div class="navbar-nav align-items-center text-center" style="display: none" id="userPanel">
+          <h6 class="nav-item dropdown mb-0 active">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"></a>
+            <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+              <a id="cartCount" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+              <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a>
+              <a class="dropdown-item" href="#" onclick="signOut()"><i class="fas fa-sign-out-alt"></i> Cerrar
+                sesión</a>
             </div>
-            <div class="modal-body">
-              <input
-                type="text"
-                id="inputUser"
-                class="form-control p-3 mb-3"
-                placeholder="Nombre de usuario"
-              />
-              <input
-                type="password"
-                id="inputPassword"
-                class="form-control p-3 my-3"
-                placeholder="Contraseña"
-              />
-              <div class="modal-footer justify-content-center">
-                <button
-                  id="submitButton"
-                  type="button"
-                  class="btn btn-lg btn-primary btn-block"
-                >
-                  Continuar
-                </button>
-              </div>
-            </div>
-          </div>
+          </h6>
         </div>
-      </div>
-    </main>
-    <footer class="text-muted bg-secondary p-3">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p class="mb-0">
-          Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la
-          letra del obligatorio.
-        </p>
-      </div>
-    </footer>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="navbar-nav" id="loginPanel">
+          <button class="nav-item btn btn-light shadow py-2 px-3" data-toggle="modal" data-target="#loginModal">
+            <h6 class="mb-0">Iniciar sesión</h6>
+          </button>
+        </div>
       </div>
     </div>
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-  </body>
+  </nav>
+
+  <main>
+    <div id="cart-container" class="container"></div>
+
+    <div class="container my-5" id="cart-details">
+      <div class="row px-4 border rounded m-5 py-5">
+        <div class="col">
+          <div class="px-4 py-1 text-uppercase font-weight-bold">
+            Detalles de envío
+          </div>
+          <div class="px-4 py-2">
+            <div class="form-group">
+              <label for="address">Dirección</label>
+              <input type="text" name="address" id="address" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="country">País</label>
+              <input type="text" name="country" id="country" class="form-control">
+            </div>
+            Tipo de envío
+            <div class="form-check pt-2">
+              <input class="form-check-input shipping-type" type="radio" name="shipping" id="premium-shipping"
+                value="premium" checked onclick="calcShippingCost()">
+              <label class="form-check-label" for="premium-shipping">Premium (2-5 días) <em>Costo del 15% del
+                  subtotal</em></label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input shipping-type" type="radio" name="shipping" id="express-shipping"
+                value="express" onclick="calcShippingCost()">
+              <label class="form-check-label" for="express-shipping">Express (5-8 días) <em>Costo del 7% del
+                  subtotal</em></label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input shipping-type" type="radio" name="shipping" id="standard-shipping"
+                value="standard" onclick="calcShippingCost()">
+              <label class="form-check-label" for="standard-shipping">Standard (12-15 días) <em>Costo del 5% del
+                  subtotal</em></label>
+            </div>
+          </div>
+          <div class="px-4 pt-3 pb-1 text-uppercase font-weight-bold">
+            Comentarios para el vendedor
+          </div>
+          <div class="px-4">
+            <p class="font-italic mb-2 small">
+              Si quieres hacer alguna aclaración para el vendedor escríbela
+              aquí
+            </p>
+            <textarea name="" cols="30" rows="4" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="col">
+          <div class="px-4 py-1 text-uppercase font-weight-bold">
+            Resumen del pedido
+          </div>
+          <div class="px-4">
+            <p class="font-italic mb-2 small">
+              Los costos de envíos son calculados en base a la dirección
+              ingresada
+            </p>
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom">
+                <strong class="text-muted">Costo de los productos </strong>
+                <div class="font-weight-bold">
+                  $ <strong id="product-subtotal"></strong>
+                </div>
+              </li>
+              <li class="d-flex justify-content-between py-3 border-bottom">
+                <strong class="text-muted">Costo de envío </strong>
+                <div class="font-weight-bold">
+                  $ <strong id="shipping-cost">10</strong>
+                </div>
+              </li>
+              <li class="d-flex justify-content-between py-3 border-bottom">
+                <strong class="text-muted">Total</strong>
+                <div>
+                  <h5 class="font-weight-bold d-inline-block">$</h5>
+                  <h5 id="total" class="font-weight-bold d-inline-block"></h5>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Ir a pagar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal login form-->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <img class="img-fluid" src="img/logo_japmarket_Title.svg" alt="Logotipo JaPMarket" />
+          </div>
+          <div class="modal-body">
+            <input type="text" id="inputUser" class="form-control p-3 mb-3" placeholder="Nombre de usuario" />
+            <input type="password" id="inputPassword" class="form-control p-3 my-3" placeholder="Contraseña" />
+            <div class="modal-footer justify-content-center">
+              <button id="submitButton" type="button" class="btn btn-lg btn-primary btn-block">
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted bg-secondary p-3">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p class="mb-0">
+        Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la
+        letra del obligatorio.
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
 </html>
