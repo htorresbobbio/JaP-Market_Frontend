@@ -119,6 +119,45 @@ function calcTotal() {
   document.querySelector("#total").innerHTML = parseInt(productTotal.innerHTML) + parseInt(shippingCost.innerHTML);
 }
 
+function showCCData() {
+  const HTMLContainer = document.querySelector("#paymentOptionContent")
+  HTMLContainer.innerHTML = `
+  <div class="form-group">
+    <label for="CCNumber">Número de tarjeta</label>
+    <input type="text" id="CCNumber" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="CCPaymentsQty">Cantidad de cuotas</label>
+    <select class="form-control" id="CCPaymentsQty">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>6</option>
+      <option>12</option>
+    </select>
+  </div>
+  `
+}
+
+function showTransferData() {
+  const HTMLContainer = document.querySelector("#paymentOptionContent")
+  HTMLContainer.innerHTML = `
+  <div class="form-group">
+    <label for="TransferBank">Banco</label>
+    <select class="form-control" id="TransferBank">
+      <option>BROU</option>
+      <option>Itau</option>
+      <option>BBVA</option>
+      <option>Santander</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="AccountNumber">Número de cuenta</label>
+    <input type="text" id="AccountNumber" class="form-control">
+  </div>
+  `
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(CART_INFO_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
