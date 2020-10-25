@@ -54,12 +54,13 @@ function showCartContent(array) {
           <div class="col-1">
             <input
               type="number"
-	      id="count${index}"
+	            id="count${index}"
               class="form-control"
-              style="width: 4rem"
+              style="width: 4.5rem"
               min="1"
               value="${article.count}"
-	      onchange="calcSubtotal()"
+              onchange="calcSubtotal()"
+              required
             />
           </div>
           <div class="col-2 text-center font-weight-bold">$ <p id="subtotal${index}" class="d-inline-block m-0"></p></div>
@@ -123,12 +124,12 @@ function showCCData() {
   const HTMLContainer = document.querySelector("#paymentOptionContent")
   HTMLContainer.innerHTML = `
   <div class="form-group">
-    <label for="CCNumber">Número de tarjeta</label>
-    <input type="text" id="CCNumber" class="form-control">
+    <label for="CCNumber">Número de tarjeta (entre 13 y 19 dígitos)</label>
+    <input type="tel" id="CCNumber" class="form-control" pattern="[0-9]{13,16}" placeholder='xxxx-xxxx-xxxx-xxxx' required>
   </div>
   <div class="form-group">
     <label for="CCPaymentsQty">Cantidad de cuotas</label>
-    <select class="form-control" id="CCPaymentsQty">
+    <select class="form-control" id="CCPaymentsQty" required>
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -144,7 +145,7 @@ function showTransferData() {
   HTMLContainer.innerHTML = `
   <div class="form-group">
     <label for="TransferBank">Banco</label>
-    <select class="form-control" id="TransferBank">
+    <select class="form-control" id="TransferBank" required>
       <option>BROU</option>
       <option>Itau</option>
       <option>BBVA</option>
@@ -153,9 +154,22 @@ function showTransferData() {
   </div>
   <div class="form-group">
     <label for="AccountNumber">Número de cuenta</label>
-    <input type="text" id="AccountNumber" class="form-control">
+    <input type="tel" id="AccountNumber" class="form-control" required>
   </div>
   `
+}
+
+function validatePaymentForm() {
+  paymentForm = document.querySelector("#paymentForm")
+  paymentForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (paymentForm.checkValidity()) {
+      document.querySelector('#mainContainer').style.display = "none"
+      document.querySelector('#successAlertContainer').classList.remove('d-none')
+      $('#paymentModal').modal('hide')
+    }
+  })
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -166,4 +180,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
       calcShippingCost()
     }
   });
+
+  shippingForm = document.querySelector("#shippingForm")
+  shippingForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (shippingForm.checkValidity()) {
+      $('#paymentModal').modal('show')
+      validatePaymentForm()
+    }
+    shippingForm.classList.add('was-validated')
+  })
 });

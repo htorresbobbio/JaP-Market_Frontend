@@ -7,12 +7,12 @@
   <meta name="description" content="" />
   <title>eMercado - Mi carrito</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- Bootstrap main css -->
-  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- Bootstrap custom theme -->
-  <link href="css/dropzone.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/theme.css" />
   <!-- <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script> -->
+  <link href="css/dropzone.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -60,89 +60,100 @@
   </nav>
 
   <main>
-    <div id="cart-container" class="container"></div>
-
-    <div class="container my-5" id="cart-details">
-      <div class="row px-4 border rounded m-5 py-5">
-        <div class="col">
-          <div class="px-4 py-1 text-uppercase font-weight-bold">
-            Detalles de envío
-          </div>
-          <form class="px-4 py-2">
-            <div class="form-group">
-              <label for="address">Dirección</label>
-              <input type="text" name="address" id="address" class="form-control" required>
+    <div id="mainContainer">
+      <form id="shippingForm" class="" novalidate>
+        <div id="cart-container" class="container"></div>
+        <div class="container my-5" id="cart-details">
+          <div class="row px-4 border rounded m-5 py-5">
+            <div class="col">
+              <div class="px-4 py-1 text-uppercase font-weight-bold">
+                Detalles de envío
+              </div>
+              <div class='px-4 py-2'>
+                <div class="form-group">
+                  <label for="address">Dirección</label>
+                  <input type="text" name="address" id="address" class="form-control" required>
+                  <div class="invalid-feedback">Ingresa una dirección de envío</div>
+                </div>
+                <div class="form-group">
+                  <label for="country">País</label>
+                  <select class="form-control" id="country" required>
+                    <option>Argentina</option>
+                    <option>Brasil</option>
+                    <option>Paraguay</option>
+                    <option selected>Uruguay</option>
+                  </select>
+                  <div class="invalid-feedback">Ingresa el país de envío</div>
+                </div>
+                Tipo de envío
+                <div class="form-check pt-2">
+                  <input class="form-check-input shipping-type" type="radio" name="shipping" id="premium-shipping"
+                    value="premium" checked required onclick="calcShippingCost()">
+                  <label class="form-check-label" for="premium-shipping">Premium (2-5 días) <em>Costo del 15% del
+                      subtotal</em></label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input shipping-type" type="radio" name="shipping" id="express-shipping"
+                    value="express" required onclick="calcShippingCost()">
+                  <label class="form-check-label" for="express-shipping">Express (5-8 días) <em>Costo del 7% del
+                      subtotal</em></label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input shipping-type" type="radio" name="shipping" id="standard-shipping"
+                    value="standard" required onclick="calcShippingCost()">
+                  <label class="form-check-label" for="standard-shipping">Standard (12-15 días) <em>Costo del 5% del
+                      subtotal</em></label>
+                  <div class="invalid-feedback">Selecciona un tipo de envío</div>
+                </div>
+              </div>
+              <div class="px-4 pt-3 pb-1 text-uppercase font-weight-bold">
+                Comentarios para el vendedor
+              </div>
+              <div class="px-4">
+                <p class="font-italic mb-2 small">
+                  Si quieres hacer alguna aclaración para el vendedor escríbela
+                  aquí
+                </p>
+                <textarea name="" cols="30" rows="4" class="form-control"></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="country">País</label>
-              <input type="text" name="country" id="country" class="form-control" required>
+            <div class="col">
+              <div class="px-4 py-1 text-uppercase font-weight-bold">
+                Resumen del pedido
+              </div>
+              <div class="px-4">
+                <p class="font-italic mb-2 small">
+                  Los costos de envíos son calculados en base a la dirección
+                  ingresada
+                </p>
+                <ul class="list-unstyled mb-4">
+                  <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted">Costo de los productos </strong>
+                    <div class="font-weight-bold">
+                      $ <strong id="product-subtotal"></strong>
+                    </div>
+                  </li>
+                  <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted">Costo de envío </strong>
+                    <div class="font-weight-bold">
+                      $ <strong id="shipping-cost">10</strong>
+                    </div>
+                  </li>
+                  <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted">Total</strong>
+                    <div>
+                      <h5 class="font-weight-bold d-inline-block">$</h5>
+                      <h5 id="total" class="font-weight-bold d-inline-block"></h5>
+                    </div>
+                  </li>
+                </ul>
+                <button class="btn btn-dark rounded-pill py-2 btn-block" form="shippingForm" type="submit">Seleccionar
+                  método de pago</a>
+              </div>
             </div>
-            Tipo de envío
-            <div class="form-check pt-2">
-              <input class="form-check-input shipping-type" type="radio" name="shipping" id="premium-shipping"
-                value="premium" checked onclick="calcShippingCost()">
-              <label class="form-check-label" for="premium-shipping">Premium (2-5 días) <em>Costo del 15% del
-                  subtotal</em></label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input shipping-type" type="radio" name="shipping" id="express-shipping"
-                value="express" onclick="calcShippingCost()">
-              <label class="form-check-label" for="express-shipping">Express (5-8 días) <em>Costo del 7% del
-                  subtotal</em></label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input shipping-type" type="radio" name="shipping" id="standard-shipping"
-                value="standard" onclick="calcShippingCost()">
-              <label class="form-check-label" for="standard-shipping">Standard (12-15 días) <em>Costo del 5% del
-                  subtotal</em></label>
-            </div>
-          </form>
-          <div class="px-4 pt-3 pb-1 text-uppercase font-weight-bold">
-            Comentarios para el vendedor
-          </div>
-          <div class="px-4">
-            <p class="font-italic mb-2 small">
-              Si quieres hacer alguna aclaración para el vendedor escríbela
-              aquí
-            </p>
-            <textarea name="" cols="30" rows="4" class="form-control"></textarea>
           </div>
         </div>
-        <div class="col">
-          <div class="px-4 py-1 text-uppercase font-weight-bold">
-            Resumen del pedido
-          </div>
-          <div class="px-4">
-            <p class="font-italic mb-2 small">
-              Los costos de envíos son calculados en base a la dirección
-              ingresada
-            </p>
-            <ul class="list-unstyled mb-4">
-              <li class="d-flex justify-content-between py-3 border-bottom">
-                <strong class="text-muted">Costo de los productos </strong>
-                <div class="font-weight-bold">
-                  $ <strong id="product-subtotal"></strong>
-                </div>
-              </li>
-              <li class="d-flex justify-content-between py-3 border-bottom">
-                <strong class="text-muted">Costo de envío </strong>
-                <div class="font-weight-bold">
-                  $ <strong id="shipping-cost">10</strong>
-                </div>
-              </li>
-              <li class="d-flex justify-content-between py-3 border-bottom">
-                <strong class="text-muted">Total</strong>
-                <div>
-                  <h5 class="font-weight-bold d-inline-block">$</h5>
-                  <h5 id="total" class="font-weight-bold d-inline-block"></h5>
-                </div>
-              </li>
-            </ul>
-            <a href="#" class="btn btn-dark rounded-pill py-2 btn-block" data-toggle="modal"
-              data-target="#paymentModal">Seleccionar método de pago</a>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
     <!-- Modal Payment Options -->
     <div class="modal" id="paymentModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -154,27 +165,27 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <form class="">
+          <form id="paymentForm">
+            <div class="modal-body">
               <div class="form-check">
                 <input type="radio" class="form-check-input" name="paymentOption" id="credit-card"
-                  onclick="showCCData()">
+                  onclick="showCCData()" required>
                 <label class="form-check-label" for="credit-card">Tarjeta de crédito</label>
               </div>
               <div class="form-check">
                 <input type="radio" class="form-check-input" name="paymentOption" id="wire-transfer"
-                  onclick="showTransferData()">
-                <label class="form-check-label" for="credit-card">Transferencia bancaria</label>
+                  onclick="showTransferData()" required>
+                <label class="form-check-label" for="wire-transfer">Transferencia bancaria</label>
               </div>
-            </form>
-            <div id="paymentOptionContent" class="mt-3"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-            <button type="button" class="btn btn-primary">Confirmar compra</button>
-          </div>
+              <div id="paymentOptionContent" class="mt-3"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+              <button type="submit" class="btn btn-primary">Confirmar compra</button>
+          </form>
         </div>
       </div>
+    </div>
     </div>
     <!--Modal login form-->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -195,8 +206,16 @@
         </div>
       </div>
     </div>
+    <div id="successAlertContainer" class="container d-none py-5">
+      <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading pt-3">¡Compra exitosa!</h4>
+        <p>Muchas gracias por tu compra, a la brevedad te notificaremos los detalles del envío y te llegará un mail con
+          la información de la transacción</p>
+      </div>
+    </div>
   </main>
-  <footer class="text-muted bg-secondary p-3">
+
+  <footer class="text-muted bg-light p-3">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>

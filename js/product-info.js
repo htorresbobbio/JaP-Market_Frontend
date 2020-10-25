@@ -53,7 +53,7 @@ function showComments(array) {
         let comment = array[i];
         let starRatingHTML = "";
         for (let i = 1; i <= comment.score; i++) {
-            starRatingHTML += "<span class='fas fa-star checked'></span>"
+            starRatingHTML += "<span class='fas fa-star star-checked'></span>"
         }
         for (let i = comment.score + 1; i <= 5; i++) {
             starRatingHTML += "<span class='fas fa-star'></span>"
