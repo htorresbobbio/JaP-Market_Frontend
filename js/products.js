@@ -46,6 +46,7 @@ function sortProducts(criteria, array) {
 
 function showProductsList() {
 
+    // <a href="product-info.html"></a>
     let htmlContentToAppend = "";
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
@@ -55,20 +56,16 @@ function showProductsList() {
             ((searchText == undefined) || ((product.name.toLowerCase().indexOf(searchText) != -1) || (product.description.toLowerCase().indexOf(searchText) != -1)))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name + `</h4>
-                            <h5 class="mb-1">` + product.cost + ` ${product.currency}</h5>
+                <div class="col-lg-4 col-md-6">
+                        <div class="card mb-3">
+                            <img src="` + product.imgSrc + `" alt="` + product.description + `" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">`+ product.name + `</h4>
+                                <h6 class="card-subtitle mb-3">` + product.cost + ` ${product.currency}</h5>
+                                <p class="card-text">` + product.description + `</p>
+                            </div>
                         </div>
-                        <p class="mb-1">` + product.description + `</p>
-                    </div>
                 </div>
-            </a>
             `
         }
 
