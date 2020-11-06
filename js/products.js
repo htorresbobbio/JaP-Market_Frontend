@@ -63,7 +63,7 @@ function showProductsList() {
                                 <h5 class="card-title mt-3">`+ product.name + `</h4>
                                 <h6 class="card-subtitle mb-3">` + product.cost + ` ${product.currency}</h5>
                                 <p class="card-text">` + product.description + `</p>
-                                <a href="/product-info.html" class="stretched-link"></a>
+                                <a href="product-info.html" class="stretched-link"></a>
                             </div>
                         </div>
                 </div>
