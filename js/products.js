@@ -60,9 +60,10 @@ function showProductsList() {
                         <div class="card mb-3">
                             <img src="` + product.imgSrc + `" alt="` + product.description + `" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title">`+ product.name + `</h4>
+                                <h5 class="card-title mt-3">`+ product.name + `</h4>
                                 <h6 class="card-subtitle mb-3">` + product.cost + ` ${product.currency}</h5>
                                 <p class="card-text">` + product.description + `</p>
+                                <a href="/product-info.html" class="stretched-link"></a>
                             </div>
                         </div>
                 </div>
