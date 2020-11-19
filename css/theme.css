@@ -24,7 +24,7 @@
   --gray                  : #6c757d;
   --gray-dark             : #343a40;
   --primary               : #563d7c;
-  --secondary             : #868e96;
+  --secondary             : #686f75;
   --success               : #28a745;
   --info                  : #17a2b8;
   --warning               : #ffc107;
@@ -3763,6 +3763,7 @@ input[type="button"].btn-block {
   background-clip : border-box;
   border          : 1px solid rgba(0, 0, 0, 0.125);
   border-radius   : 0.25rem;
+  height          : 100%;
 }
 
 .card>hr {
