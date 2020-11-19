@@ -56,16 +56,16 @@ function showProductsList() {
             ((searchText == undefined) || ((product.name.toLowerCase().indexOf(searchText) != -1) || (product.description.toLowerCase().indexOf(searchText) != -1)))) {
 
             htmlContentToAppend += `
-                <div class="col-lg-4 col-md-6">
-                        <div class="card mb-3">
-                            <img src="` + product.imgSrc + `" alt="` + product.description + `" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title mt-3">`+ product.name + `</h4>
-                                <h6 class="card-subtitle mb-3">` + product.cost + ` ${product.currency}</h5>
-                                <p class="card-text">` + product.description + `</p>
-                                <a href="product-info.html" class="stretched-link"></a>
-                            </div>
-                        </div>
+                <div class="row border rounded-lg bg-white position-relative my-3">
+                    <div class="col-md-3 col-12 mb-3">
+                        <img src="img/products/${product.imgSrc.slice(4)}" class="img-fluid mt-3" alt="${product.description}">
+                    </div>
+                    <div class="col-md-9 col-12 align-self-center">
+                        <h5 class="mt-0">${product.name}</h5>
+                        <h6>$ ${product.cost}<h6>
+                        <p>${product.description}</p>
+                    </div>
+                    <a href="product-info.html" class="stretched-link"></a>
                 </div>
             `
         }
