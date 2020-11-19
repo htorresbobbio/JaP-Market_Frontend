@@ -14,9 +14,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 shadow-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-5 mb-3 shadow-lg">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="img/logo_japmarket_Title_navbar.svg" height="50" alt=""></a>
+      <a class="navbar-brand" href="index.html"><img src="img/logos/logo_japmarket_Title_navbar.svg" height="50"
+          alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
@@ -48,24 +49,45 @@
       </div>
     </div>
   </nav>
-  <main role="main" class="py-5">
+  <main role="main">
     <div class="container">
-      <div class="row">
-        <div class="col text-right">
-          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <label class="btn btn-light active" id="sortAsc">
-              <input type="radio" name="options" autocomplete="off" checked>A-Z
-            </label>
-            <label class="btn btn-light" id="sortDesc">
-              <input type="radio" name="options" autocomplete="off">Z-A
-            </label>
-            <label class="btn btn-light" id="sortByCount">
-              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
-            </label>
+      <div class="row justify-content-end mr-2">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle mx-2" type="button" id="dropdownSortButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Orden
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="dropdown-item active" id="sortAsc" type="button">Alfabético</button>
+            <button class="dropdown-item" id="sortDesc" type="button">Alfabético inverso</button>
+            <button class="dropdown-item" id="sortByCount" type="button">Cantidad de productos</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownFilterButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Filtro
+          </button>
+          <div class="dropdown-menu" style="max-width: 200px;" aria-labelledby="dropdownMenuButton">
+            <p class="px-3 mb-0 text-muted text-center">Cantidad de productos</p>
+            <div class="px-3 pt-2">
+              <div class="form-group">
+                <label for="rangeFilterCountMin">Mínimo</label>
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              </div>
+              <div class="form-group">
+                <label for="rangeFilterCountMax">Máximo</label>
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+              </div>
+              <div class="btn-group mb-2" role="group">
+                <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-secondary" id="clearRangeFilter">Limpiar</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row justify-content-end mb-3">
+      <!-- <div class="row justify-content-end mb-3">
         <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
@@ -86,10 +108,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="list-group" id="cat-list-container">
-        </div>
+      </div> -->
+      <div class="row" id="cat-list-container">
       </div>
     </div>
   </main>
@@ -110,7 +130,7 @@
       </div>
     </div>
   </div>
-  <footer class="text-muted bg-secondary p-3">
+  <footer class="text-white bg-secondary p-3">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>

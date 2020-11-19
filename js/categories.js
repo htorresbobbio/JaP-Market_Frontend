@@ -44,21 +44,30 @@ function showCategoriesList() {
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))) {
 
             htmlContentToAppend += `
-            <a href="category-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ category.name + `</h4>
-                            <small class="text-muted">` + category.productCount + ` artículos</small>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                        <div class="card">
+                            <img src="img/categories/${category.imgSrc.slice(4)}" alt="${category.description}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title mt-3">${category.name}</h5>
+                                <h6 class="card-subtitle mb-3">${category.productCount} artículos</h6>
+                                <p class="card-text">${category.description}</p>
+                                <a href="category-info.html" class="stretched-link"></a>
+                            </div>
                         </div>
-                        <p class="mb-1">` + category.description + `</p>
-                    </div>
                 </div>
-            </a>
             `
+            // <a href="category-info.html" class="list-group-item list-group-item-action">
+            //     <div class="row align-items-center">
+            //         <div class="col-4 col-md-3">
+            //             <img src="img/categories/${category.imgSrc.slice(4)}" alt="${category.description}" class="img-thumbnail">
+            //         </div>
+            //         <div class="col mx-2">
+            //                 <h4 class="mb-1">${category.name}</h4>
+            //                 <small class="text-muted">${category.productCount} artículos</small>
+            //             <p class="mb-1">${category.description}</p>
+            //         </div>
+            //     </div >
+            // </a >
         }
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
@@ -92,14 +101,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.getElementById("sortAsc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_ASC_BY_NAME);
+        document.querySelector("#sortDesc").classList.remove("active")
+        document.querySelector("#sortByCount").classList.remove("active")
+        document.querySelector("#sortAsc").classList.add("active")
     });
 
     document.getElementById("sortDesc").addEventListener("click", function () {
         sortAndShowCategories(ORDER_DESC_BY_NAME);
+        document.querySelector("#sortDesc").classList.add("active")
+        document.querySelector("#sortByCount").classList.remove("active")
+        document.querySelector("#sortAsc").classList.remove("active")
     });
 
     document.getElementById("sortByCount").addEventListener("click", function () {
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
+        document.querySelector("#sortDesc").classList.remove("active")
+        document.querySelector("#sortByCount").classList.add("active")
+        document.querySelector("#sortAsc").classList.remove("active")
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
