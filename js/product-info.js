@@ -9,16 +9,17 @@ function showRelatedProducts(relatedArray) {
     relatedArray.forEach(relatedIndex => {
         let product = productsArray[relatedIndex]
         htmlContentToAppend += `
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="${product.imgSrc}">
-                <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
-                <p class="card-text"><strong>Precio: </strong>${product.currency} ${product.cost}
-                    <p class="card-text">${product.description}</p>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="img/products/${product.imgSrc.slice(4)}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text"><strong>Precio: </strong>${product.currency} ${product.cost}
+                        <p class="card-text mb-0">${product.description}</p>
+                        <a class="card-link stretched-link" href="product-info.html"></a>
+                    </div>
                 </div>
             </div>
-        </div>
         `
     });
 
@@ -32,14 +33,14 @@ function showImagesGallery(array) {
         if (imageSrc.indexOf("_") < 0) {
             htmlContentToAppend += `
                 <div class="carousel-item active">
-                    <img src="${imageSrc}" class="d-block w-100" alt="">
+                    <img src="img/products/${imageSrc.slice(4)}" class="d-block w-100" alt="">
                 </div>
         `
         }
         else {
             htmlContentToAppend += `
                 <div class="carousel-item">
-                    <img src="${imageSrc}" class="d-block w-100" alt="">
+                    <img src="img/products/${imageSrc.slice(4)}" class="d-block w-100" alt="">
                 </div>
         `
         }
@@ -58,10 +59,14 @@ function showComments(array) {
         for (let i = comment.score + 1; i <= 5; i++) {
             starRatingHTML += "<span class='fas fa-star'></span>"
         }
-        htmlContentToAppend += `<div class="mt-2"><strong>Calificación:</strong> ${starRatingHTML}</div>
-        <p class="mt-1 mb-2">${comment.description}</p>
-        <div class="mb-5 ml-4"><h6 class="font-weight-bold small">${comment.user}</h6>
-        <em>Publicado el ${comment.dateTime}</em></div>`
+        htmlContentToAppend += `
+            <li class="list-group-item">
+                <div>${starRatingHTML}</div>
+                <p>${comment.description}</p>
+                <p class="font-weight-bold small mb-0">${comment.user}</p>
+                <em class="small">Publicado el ${comment.dateTime}</em>
+            </li>
+        `
         document.getElementById("productComments").innerHTML = htmlContentToAppend;
     }
 }
@@ -92,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                     productNameHTML.innerHTML = product.name;
                     productDescriptionHTML.innerHTML = product.description;
-                    productCostHTML.innerHTML = `${product.cost} ${product.currency}`;
-                    productSoldCountHTML.innerHTML = product.soldCount;
-                    productCategory.innerHTML = product.category;
+                    productCostHTML.innerHTML += `${product.cost} ${product.currency}`;
+                    productSoldCountHTML.innerHTML += product.soldCount;
+                    productCategory.innerHTML += product.category;
 
                     showImagesGallery(product.images);
                     showRelatedProducts(product.relatedProducts);
