@@ -99,32 +99,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
     userName.innerText = userLogged.email;
     userPanel.style.display = "flex";
     loginPanel.style.display = "none";
-  } else if (location.pathname == "/Obligatorio-JaP-DW2020/" || "/index.html") {
-    $("#loginModal").modal();
   }
-
-  var submitButton = document.getElementById("submitButton");
-  submitButton.addEventListener("click", function (e) {
-    let inputUser = document.getElementById("inputUser");
-    let inputPassword = document.getElementById("inputPassword");
-    let isFilled = true;
-
-    if (inputUser.value.trim() === "") {
-      isFilled = false;
-    }
-
-    if (inputPassword.value.trim() === "") {
-      isFilled = false;
-    }
-
-    if (isFilled) {
-      sessionStorage.clear();
-      sessionStorage.setItem(
-        "User-Logged",
-        JSON.stringify({ email: inputUser.value.trim() })
-      );
-      sessionStorage.setItem("Visited", true);
-      window.location.reload();
-    }
-  });
 });
