@@ -1,26 +1,21 @@
-/* eslint-disable no-unused-vars */
 const CATEGORIES_URL =
-  "https://japdevdep.github.io/ecommerce-api/category/all.json";
+  "https://japdevdep.github.io/ecommerce-api/category/all.json"
 const PUBLISH_PRODUCT_URL =
-  "https://japdevdep.github.io/ecommerce-api/product/publish.json";
+  "https://japdevdep.github.io/ecommerce-api/product/publish.json"
 const CATEGORY_INFO_URL =
-  "https://japdevdep.github.io/ecommerce-api/category/1234.json";
+  "https://japdevdep.github.io/ecommerce-api/category/1234.json"
 const PRODUCTS_URL =
-  "https://japdevdep.github.io/ecommerce-api/product/all.json";
+  "https://japdevdep.github.io/ecommerce-api/product/all.json"
 const PRODUCT_INFO_URL =
-  "https://japdevdep.github.io/ecommerce-api/product/5678.json";
+  "https://japdevdep.github.io/ecommerce-api/product/5678.json"
 const PRODUCT_INFO_COMMENTS_URL =
-  "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
-const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
-const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+  "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json"
+const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
+const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json"
 
-var showSpinner = function () {
-  document.getElementById("spinner-wrapper").style.display = "block";
-};
+const showSpinner = () => document.getElementById("spinner-wrapper").style.display = "flex"
 
-var hideSpinner = function () {
-  document.getElementById("spinner-wrapper").style.display = "none";
-};
+const hideSpinner = () => document.getElementById("spinner-wrapper").style.display = "none"
 
 var getJSONData = function (url) {
   var result = {};
@@ -73,21 +68,19 @@ function onSignIn(googleUser) {
 }
 
 function signOut() {
-  var loggedWithGoogle = JSON.parse(sessionStorage.getItem("loggedWithGoogle"));
+  var loggedWithGoogle = JSON.parse(sessionStorage.getItem("loggedWithGoogle"))
   if (loggedWithGoogle) {
-    var auth2 = gapi.auth2.getAuthInstance();
+    var auth2 = gapi.auth2.getAuthInstance()
     auth2.signOut().then(function () {
-      console.log("User signed out.");
-    });
+      console.log("User signed out.")
+    })
   }
-  sessionStorage.clear();
-  sessionStorage.setItem("Visited", true);
-  window.location.href = "index.html";
+  sessionStorage.clear()
+  localStorage.clear()
+  sessionStorage.setItem("Visited", true)
+  window.location.href = "index.html"
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
   // onLoad()
   userLogged = sessionStorage.getItem("User-Logged");
