@@ -17,30 +17,25 @@ const showSpinner = () => document.getElementById("spinner-wrapper").style.displ
 
 const hideSpinner = () => document.getElementById("spinner-wrapper").style.display = "none"
 
-var getJSONData = function (url) {
-  var result = {};
-  showSpinner();
-  return fetch(url)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw Error(response.statusText);
-      }
-    })
-    .then(function (response) {
-      result.status = "ok";
-      result.data = response;
-      hideSpinner();
-      return result;
-    })
-    .catch(function (error) {
-      result.status = "error";
-      result.data = error;
-      hideSpinner();
-      return result;
-    });
-};
+async function getJSONData(url) {
+  try {
+    showSpinner()
+    let response = await fetch(url)
+    let result = {}
+
+    if (response.ok) {
+      result.data = await response.json()
+      result.status = "ok"
+      hideSpinner()
+      return result
+    } else {
+      hideSpinner()
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 //Google Auth Logout
 function onLoad() {
