@@ -45,8 +45,6 @@ function sortProducts(criteria, array) {
 }
 
 function showProductsList() {
-
-    // <a href="product-info.html"></a>
     let htmlContentToAppend = "";
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];

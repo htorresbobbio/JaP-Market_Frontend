@@ -60,44 +60,58 @@
 
   <main role="main">
     <div class="container">
-      <div class="row justify-content-end mr-2">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle mx-2" type="button" id="dropdownSortButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Orden
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item active" id="sortRelevance" type="button">Relevancia</button>
-            <button class="dropdown-item" id="sortCostAsc" type="button">Mas baratos</button>
-            <button class="dropdown-item" id="sortCostDesc" type="button">Mas caros</button>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="searchText" placeholder="Buscar productos"
+              aria-label="Buscar productos" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-primary" id="searchClear">Limpiar</button>
+            </div>
           </div>
         </div>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownFilterButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Filtro
-          </button>
-          <div class="dropdown-menu" style="max-width: 200px;" aria-labelledby="dropdownMenuButton">
-            <p class="px-3 mb-0 text-muted text-center">Precio</p>
-            <div class="px-3 pt-2">
-              <div class="form-group">
-                <label for="rangeFilterCountMin">Mínimo</label>
-                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+        <div class="col d-flex justify-content-end">
+          <div class="btn-group mr-2">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownSortButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Orden
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item active" id="sortRelevance" type="button">Relevancia</button>
+                <button class="dropdown-item" id="sortCostAsc" type="button">Mas baratos</button>
+                <button class="dropdown-item" id="sortCostDesc" type="button">Mas caros</button>
               </div>
-              <div class="form-group">
-                <label for="rangeFilterCountMax">Máximo</label>
-                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-              </div>
-              <div class="btn-group mb-2" role="group">
-                <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-secondary" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+          <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownFilterButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filtro
+              </button>
+              <div class="dropdown-menu" style="max-width: 200px;" aria-labelledby="dropdownMenuButton">
+                <p class="px-3 mb-0 text-muted text-center">Precio</p>
+                <div class="px-3 pt-2">
+                  <div class="form-group">
+                    <label for="rangeFilterCountMin">Mínimo</label>
+                    <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+                  </div>
+                  <div class="form-group">
+                    <label for="rangeFilterCountMax">Máximo</label>
+                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+                  </div>
+                  <div class="btn-group mb-2" role="group">
+                    <button class="btn btn-primary" id="rangeFilterCount">Filtrar</button>
+                    <button class="btn btn-secondary" id="clearRangeFilter">Limpiar</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="cat-list-container">
-      </div>
+      <div class="col" id="cat-list-container"></div>
     </div>
   </main>
   <footer class="text-white bg-secondary p-3">
