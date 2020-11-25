@@ -41,7 +41,7 @@ function showCartContent(array) {
                   <div class="row mb-4 align-items-center">
                     <div class="col-md-5 col-lg-3 col-xl-3">
                       <img class="img-fluid w-100"
-                        src="/img/products/${article.src.slice(4)}" alt="Sample">
+                        src="img/products/${article.src.slice(4)}" alt="Sample">
                     </div>
                     <div class="col-md-7 col-lg-9 col-xl-9">
                       <div class="row mb-3 mt-3">
